@@ -32,11 +32,11 @@ impl<const DOUBLE_INT_RANGE: usize> Divider<DOUBLE_INT_RANGE> {
             }
         };
 
-        let half_range_plus_one = const_one << (DOUBLE_INT_RANGE / 2);
-        let two_to_l = const_one << l;
-        let two_to_l_minus_d = two_to_l - divisor;
-        let result_off_by_one = half_range_plus_one * two_to_l_minus_d / divisor;
-        let multiplier = { result_off_by_one + 1 };
+        let two_to_the_l = const_one << l;
+        let two_to_the_l_minus_divisor = two_to_the_l - divisor;
+
+        let half_of_representable_range = const_one << (DOUBLE_INT_RANGE / 2);
+        let multiplier = (half_of_representable_range * two_to_the_l_minus_divisor / divisor) + 1;
 
         // The final multiplier is meant to be in the range 0 <= multiplier < 2^INT_RANGE (i.e, it
         // should be a valid in in BUint<DOUBLE_INT_RANGE / 2>. We use this mask to delete any
