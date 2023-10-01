@@ -8,3 +8,5 @@ edition = "2021"
 [dependencies]
 bnum = { version = "0.9.0", features = ["nightly"] }
 num = "0.4.1"
+quickcheck = "1.0.3"
+quickcheck_macros = "1.0.0"
